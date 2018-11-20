@@ -1,14 +1,17 @@
 
 const { router, get} = require('microrouter')
 const cors= require('micro-cors')()
+const { send } = require('micro')
+const Stats = require ('./stats')
 
 
-const Stats=require('./stats')
-const 
+
+
+
+
 module.exports = cors(
     router(
         ...Stats,
-        
     )  
     
 )
