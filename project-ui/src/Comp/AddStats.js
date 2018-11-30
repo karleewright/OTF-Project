@@ -14,30 +14,31 @@ import {
 //import { artistAPI } from '../../config/coms'
 
 
-class ModalPage extends React.Component {
+class AddStats extends React.Component {
   constructor(props) {
     super(props);
     
-    let stats;
-    if (props.stats) {
-      stats = props.stats
-    } else {
-      stats = {'Date': '', 'Burned': '', 'Low': '', 'Med': '', 'High': '','Critical': '', 'Extreme': '', 'AvgHR': '', 'PeakHR': '', 'AvgPercMaxHR': '', 'MaxHR': ''}
-    }
+    // let stats;
+    // if (props.stats) {
+    //   stats = props.stats
+    // } else {
+    //   stats = {'Date': '', 'Burned': '', 'Low': '', 'Med': '', 'High': '','Critical': '', 'Extreme': '', 'AvgHR': '', 'PeakHR': '', 'AvgPercMaxHR': '', 'MaxHR': ''}
+    // }
     this.state = {
-      modal14: false,
-      Date: stats.Date,
-      Burned: stats.Burned,
-      Low: stats.Low,
-      Med: stats.Med,
-      High: stats.High,
-      Critical: stats.Critical,
-      Extreme: stats.Extreme,
-      AvgHR: stats.AvgHR,
-      PeakHR: stats.PeakHR,
-      AvgPercMaxHR: stats.AvgPercMaxHR,
-      MaxHR: stats.MaxHR
-    };
+      modal14: false}
+
+    //   Date: stats.Date,
+    //   Burned: stats.Burned,
+    //   Low: stats.Low,
+    //   Med: stats.Med,
+    //   High: stats.High,
+    //   Critical: stats.Critical,
+    //   Extreme: stats.Extreme,
+    //   AvgHR: stats.AvgHR,
+    //   PeakHR: stats.PeakHR,
+    //   AvgPercMaxHR: stats.AvgPercMaxHR,
+    //   MaxHR: stats.MaxHR
+    // };
   }
   
 
@@ -87,13 +88,15 @@ class ModalPage extends React.Component {
         <ModalHeader  toggle={() => this.toggle(14)}> Add Your Stats Here </ModalHeader>
         <ModalBody>
         <Container  className="text-white">
-            <form className= "statsform" onSubmit={this.handleSubmit}>
+            <form className= "statsform" 
+            // onSubmit={this.handleSubmit}
+            >
             <Row>
             <Col>
               Date:
               <input type="text"  
-              value= {this.state.Date} 
-              onChange= {event=> this.setState ({Date:event.target.value})}
+              value= "11.20.2018" 
+              // onChange= {event=> this.setState ({Date:event.target.value})}
               name= "date"  
               placeholder="YYYY.MM.DD" />
               <br />
@@ -188,7 +191,8 @@ class ModalPage extends React.Component {
           <ModalFooter>
            <Button  
            color="primary" 
-           onClick ={ () => this.handleSubmit}>
+          //  onClick ={ () => this.handleSubmit}
+          >
            Save changes</Button>
            
            <Button 
@@ -208,4 +212,4 @@ class ModalPage extends React.Component {
   //componentWillUpdate() to update data on PUT/POST/DEL call?
 }
 
-export default ModalPage;
+export default AddStats;
