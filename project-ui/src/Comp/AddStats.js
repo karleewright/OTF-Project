@@ -95,7 +95,7 @@ class AddStats extends React.Component {
             <Col>
               Date:
               <input type="text"  
-              value= "11.20.2018" 
+              
               // onChange= {event=> this.setState ({Date:event.target.value})}
               name= "date"  
               placeholder="YYYY.MM.DD" />
