@@ -1,3 +1,8 @@
+//Seperate Component that feeds into HOME
+//GET API CALL always rendered
+
+
+
 //table display
 //create fetch JS()  to view stats then import to parent which is HOME
 //use Coms file to add stats?
@@ -120,7 +125,8 @@ class ViewStats extends Component {
 
             return (
                 <div>
-                    return something
+                    VIEW STATS TABLE HERE as a 
+                    JSX Tag of StatsTable > StatsCategoryRow > StatsRow 
                 </div>
             )
             

@@ -1,3 +1,6 @@
+//Seperate Component that feeds into home
+//POST API CALL to StatsTable?
+
 import React from "react";
 import {
   Container,
