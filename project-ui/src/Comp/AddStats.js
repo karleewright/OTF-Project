@@ -1,5 +1,7 @@
 //Seperate Component that feeds into home
-//POST API CALL to StatsTable?
+//[POST API] CALL to StatsTable
+
+//[PUT API ] CALL to StatsTable
 
 import React from "react";
 import {
@@ -15,20 +17,25 @@ import {
 } from "mdbreact";
 
 //import { artistAPI } from '../../config/coms'
-
+//for what I am doing should I use a coms file too with API Calls
 
 class AddStats extends React.Component {
   constructor(props) {
     super(props);
     
-    // let stats;
-    // if (props.stats) {
-    //   stats = props.stats
-    // } else {
-    //   stats = {'Date': '', 'Burned': '', 'Low': '', 'Med': '', 'High': '','Critical': '', 'Extreme': '', 'AvgHR': '', 'PeakHR': '', 'AvgPercMaxHR': '', 'MaxHR': ''}
-    // }
+    let stats;
+    if (props.stats) {
+    stats = props.stats
+    } else {
+    stats = {'Date': ''}
+    //  'Burned': '', 'Low': '', 'Med': '', 'High': '','Critical': '', 'Extreme': '', 'AvgHR': '', 'PeakHR': '', 'AvgPercMaxHR': '', 'MaxHR': ''}
+   }
+
     this.state = {
+      Date: stats.Date,
+
       modal14: false}
+    }
 
     //   Date: stats.Date,
     //   Burned: stats.Burned,
@@ -42,27 +49,29 @@ class AddStats extends React.Component {
     //   AvgPercMaxHR: stats.AvgPercMaxHR,
     //   MaxHR: stats.MaxHR
     // };
-  }
+  
   
 
   
   
-  toggle(nr) {
-    let modalNumber = "modal" + nr;
-    this.setState({
-      [modalNumber]: !this.state[modalNumber]
-    });
-  }
+    toggle(nr) {
+      let modalNumber = 'modal' + nr
+      this.setState({
+        [modalNumber]: !this.state[modalNumber]
+      });
+    }
 
-    //componentWillMount() DO I NEED THIS???
+  //   componentWillMount() {
     
-    // INSERT EVENT HANDLERS FOR EACH KEY/VALUE PAIR???
-  //   handleAddGenre = () => {
-  //     this.setState({
-  //         genre: this.state.genre.concat([ '' ])
-  //     });
-  // } 
-
+     // INSERT EVENT HANDLERS FOR EACH KEY/VALUE PAIR???
+  //    handleAddDate = (evt) => {
+  //       evt.preventDefault()
+  //       this.setState({
+  //       Date: this.state.Date.concat([ '' ])
+  //       }); 
+  //   }
+  
+  // }
 
 
     // HOW TO USE THIS??
@@ -76,9 +85,9 @@ class AddStats extends React.Component {
     //     artistAPI(this.state, this.props.action, path)
     // }
 
-  render() {
-    return (
+    render() {
       
+    return (
       <Container>
         <Button color="primary" onClick={() => this.toggle(14)}>
           Add Stats
@@ -88,10 +97,14 @@ class AddStats extends React.Component {
           isOpen={this.state.modal14}
           toggle={() => this.toggle(14)}
           centered >
-        <ModalHeader  toggle={() => this.toggle(14)}> Add Your Stats Here </ModalHeader>
+
+        <ModalHeader  
+          toggle={() => this.toggle(14)}> Add Your Stats Here 
+        </ModalHeader>
+
         <ModalBody>
         <Container  className="text-white">
-            <form className= "statsform" 
+            <form className= "statsform"
             // onSubmit={this.handleSubmit}
             >
             <Row>
@@ -101,10 +114,37 @@ class AddStats extends React.Component {
               
               // onChange= {event=> this.setState ({Date:event.target.value})}
               name= "date"  
-              placeholder="YYYY.MM.DD" />
+              placeholder="YYYY.MM.DD"
+              id= "dbID" />
               <br />
+            </Col>
+            </Row>
+              </form>
+          
+        </Container>
+        </ModalBody>
+
+          <ModalFooter>
+           <Button  
+           color="primary" 
+          //  onClick ={ () => this.handleSubmit}
+          >
+           Save changes</Button>
+           
+           <Button 
+           color="secondary" 
+           onClick={() => this.toggle(14)}>
+           Close</Button>
+           
+          </ModalFooter>
+        </Modal>
+      </Container>
+    
+    );
+  }
+    
               
-              {/* Burned:
+              /* Burned:
               <input type="text" 
               value= {this.state.Burned}
               onChange= {event=>this.setState ({Burned:event.target.value})}
@@ -182,37 +222,17 @@ class AddStats extends React.Component {
               onChange={event=>this.setState ({MaxHR:event.target.value})}
               name="MaxHR" 
               placeholder="Max HR #" />
-              <br /> */}
+              <br /> */
+            
+}
               
-              </Col>
-              </Row>
-            </form>
-          
-          </Container>
-          </ModalBody>
-
-          <ModalFooter>
-           <Button  
-           color="primary" 
-          //  onClick ={ () => this.handleSubmit}
-          >
-           Save changes</Button>
-           
-           <Button 
-           color="secondary" 
-           onClick={() => this.toggle(14)}>
-           Close</Button>
-           
-          </ModalFooter>
-        </Modal>
-      </Container>
-    
-    );
-  }
+              
+  
+  
 
   //DO I NEED THIS??
   // componentDidMount() to grab external data on the GET call 
   //componentWillUpdate() to update data on PUT/POST/DEL call?
-}
+
 
 export default AddStats;

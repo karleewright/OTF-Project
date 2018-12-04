@@ -1,25 +1,18 @@
 //Seperate Component that feeds into HOME
-//GET API CALL always rendered
+//[GET] API CALL always rendered as a table of stats
 
-
-
-//table display
 //create fetch JS()  to view stats then import to parent which is HOME
-//use Coms file to add stats?
+//use Coms file for API Calls or just call in component?
 
-// ??? === Question to lookup 
-// ONLY THINK ABOUT WHAT IS NECESSARY.
 
+//import StatsTable here
 import React, {Component} from 'react';
 //naming: In this class what do we want to do? "ViewStats"
 
 class ViewStats extends Component {
     constructor(){
-        super(); //supercall extends component :  What is a supercall purpose???
-                                                  //ANSWER: 
-        //globalClassVariables:      this.varName
-        
-        //@KW refine this when you know more.
+        super();
+       
          this.state = {
             Date: " ",
             Burned: " ",
@@ -40,19 +33,43 @@ class ViewStats extends Component {
         // this.handleClick = this.handleClick.bind(this) //when I say handleClick I want you to think of this class, and .bind(what?- this)
     }
     
-    //HERE COMES YOUR API CALLL!!!!!
 
-    componentWillMount () {   
 
+
+
+
+    render () {
+
+        return (
+            <div>
+                ViewStats JSX Tag
+            </div>
+        )
+        
+        };
+
+
+
+
+    }
+    export default  ViewStats;
+
+
+
+
+    
+    
+       
+    
 
          //globalClassVariables:      this.varName
-         const results = this.getStatResult
+        //  const results = this.getStatResult
          //When I say the variable "results" I am also saying get the data results in a new object in this class (also global?) called "getStatResult" which only applies to this class.
                  
          //does the .allStat_____here just allow variable to mutate to further describe something???
  
-          const data = this.allStatData
-          //When I say the variable "data" I am assigning it a new ID  as allStatData in a new object in this cass (also global?) called  "allStatData". 
+        // const data = this.allStatData
+        //   //When I say the variable "data" I am assigning it a new ID  as allStatData in a new object in this cass (also global?) called  "allStatData". 
          
           //Is this correct???
          //     Allows me to .target() in 
@@ -66,33 +83,42 @@ class ViewStats extends Component {
          // Inside we have Key  :  "value" pairs that are props of this class
         
          //function handlErrors defines what to do if there are anyerrors in API Call 
-        function handleErrors(response) { 
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response;
-        }
+        // function handleErrors(response) { 
+        //     if (!response.ok) {
+        //         throw Error(response.statusText);
+        //     }
+        //     return response;
+        // }
 
-        fetch("http://localhost:4000/stats") // where your data is 
+        // fetch("http://localhost:4000/stats") // where your data is 
+        //     // calling the handleErrors functiton if there is issue in API call first
+        //     // .then(handleErrors( results )) 
+
+        //     // then if no issue, a function called results will return our result in json format and console log "works" 
+        //     .then(results => {
+        //         return results.json(); 
+        //         console.log("works")
+        //     })
+        //     // then we async/await the display of results that get loaded. 
+        //     .then(async results => {
+        //         data = await results.json();
+        //         console.log("results loaded")
             
-            // calling the handleErrors functiton if there is issue in API call first
-            .then(handleErrors) 
+        //     .catch(error => console.log("error") );
+            
+        //     })
 
-            // then if no issue, a function called results will return our result in json format and console log "works" 
-            .then(results => {
-                return results.json(); 
-                console.log("works")
-            })
-
-            // then we async/await the display of results that get loaded. Like jello transfered over before it is displayed. 
-            .then(async data => {
-                data = await results.json();
-                console.log("results loaded")
-            })
+        //     .then(this.setState( 
+        //         {allStatData : data}) )
+        //     //this setsState of allStatData
+                
             // lastly, need to catch any error if not working and console log "error"
-            .catch(error => console.log("error") );
-         };
-        
+            // .catch(error => console.log("error") );
+            
+            // console.log(this.state.allStatData)
+         
+            
+
                 // data.map((Stat) => {
                 //     return(
                 //         <div key={Stat.results}>
@@ -121,25 +147,7 @@ class ViewStats extends Component {
                 // console.log("stat", this.stat.Date)
                 // console.log(JSON.stringify(myJson));
            
-            render () {
-
-            return (
-                <div>
-                    VIEW STATS TABLE HERE as a 
-                    JSX Tag of StatsTable > StatsCategoryRow > StatsRow 
-                </div>
-            )
             
-            };
-
-
-
-
-        }
-        export default  ViewStats;
-    
-
-
 
 
 
