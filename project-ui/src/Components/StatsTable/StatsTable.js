@@ -21,8 +21,10 @@ class StatsTable extends Component {
     constructor() {
         super();
         this.state = {
-            data:[]
-        }
+            data:[],
+            accessor: {}
+        
+          }
 
 
 
@@ -42,6 +44,107 @@ class StatsTable extends Component {
         console.log('all stats' , this.state.data)
       });
     }
+    
+    render() {
+      const { data } = this.state;
+      return (
+        <div>
+          <ReactTable
+            data={data}
+            columns={[
+              {
+                Header: "Date",
+                columns: [
+                  {
+                    Header: "Date",
+                    id: "Date",
+                    accessor: d => d.lastName
+                  }
+                ]
+              },
+
+
+              {
+                Header: "Calories Burned",
+                columns: [
+                  {
+                    Header: "Calories Burned",
+                    accessor: "Burned"
+                  },
+                ]
+              },
+
+
+              {
+                Header: 'Ponts Earned',
+                columns: [
+                  {
+                    Header: "Low",
+                    accessor: "Low"
+                  },
+                  {
+                    Header: "Med",
+                    accessor: "High"
+                  },
+                  {
+                    Header: "High",
+                    accessor: "High"
+                  },
+                  {
+                    Header: "Critical",
+                    accessor: "Critical"
+                  },
+                  {
+                    Header: "Extreme",
+                    accessor: "Extreme"
+                  },
+                ]
+              },
+
+              {
+                Header: 'Heart Rate',
+                columns: [
+                  {
+                    Header: "Average",
+                    accessor: "AvgHR"
+                  },
+                  {
+                    Header: "Peak HeartRate",
+                    accessor: "PeakHR"
+                  },
+                  {
+                    Header: "Avg. % Max HR",
+                    accessor: "AvgPercMaxHR"
+                  },
+                  {
+                    Header: "MaxHR",
+                    accessor: "MaxHR"
+                  },
+                ]
+              },
+
+
+
+            ]}
+            defaultPageSize={10}
+            className="-striped -highlight"
+          />
+          <br />
+      
+       
+        </div>
+      );
+    }
+  }
+  
+
+
+
+  export default StatsTable;
+
+
+
+
 
 
     //What functions to manipulate the data?
@@ -58,74 +161,16 @@ class StatsTable extends Component {
 
 
     
-    render() {
-        const { data } = this.state.data;
-      
-        return(
-            <div>
-             <ReactTable
-          data={data}
-          columns={[
-            {
-              Header: "Name",
-              columns: [
-                {
-                  Header: "First Name",
-                  accessor: "firstName"
-                },
-                {
-                  Header: "Last Name",
-                  id: "lastName",
-                  accessor: d => d.lastName
-                }
-              ]
-            },
-            {
-              Header: "Info",
-              columns: [
-                {
-                  Header: "Age",
-                  accessor: "age"
-                },
-                {
-                  Header: "Status",
-                  accessor: "status"
-                }
-              ]
-            },
-            {
-              Header: 'Stats',
-              columns: [
-                {
-                  Header: "Visits",
-                  accessor: "visits"
-                }
-              ]
-            }
-          ]}
-          defaultPageSize={45}
-          className="-striped -highlight"
-        />
-                
-            </div>
-        )
     
-    }
-    
-    
-    
-    
-       
-    
-}
 
-{/* <ViewStats data={this.state.data}/> */}
+
+//<ViewStats data={this.state.data}/> 
 
               
-{/* taking the "data" and setting it to a NEW object this.state.stats to be passed around and used by children within the StatsTable Component */}
+//* taking the "data" and setting it to a NEW object this.state.stats to be passed around and used by children within the StatsTable Component */
 
-{/* <ViewStats data={this.state.stats}/>   */}
-export default StatsTable
+//<ViewStats data={this.state.stats}/>   
+
 
 
 

@@ -1,0 +1,77 @@
+Why did you update GitHub
+Air BnB GitHub ES Lint install
+Use a Snipett Lybrary for React. ES7 React, Redux, React Native Snipett
+Ordering for class extends React.Component:
+
+LAYOUT
+IMPORTS
+
+constructor
+getChildContext
+componentWillMount
+componentDidMount
+componentWillReceiveProps
+shouldComponentUpdate
+componentWillUpdate
+componentDidUpdate
+componentWillUnmount
+clickHandlers or eventHandlers like onClickSubmit() or onChangeDescription()
+getter methods for render like getSelectReason() or getFooterContent()
+optional render methods like renderNavigation() or renderProfilePicture()
+
+RENDER() {
+    RETURN(
+        <div>
+            <ComponentName {this.state.props} />
+        </div>
+    )
+}
+EXPORTS
+
+
+//Method Calls in a Class//
+class extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onClickDiv = this.onClickDiv.bind(this);
+  }
+
+  onClickDiv() {
+    // do stuff
+  }
+
+  render() {
+    return <div onClick={this.onClickDiv} />;
+  }
+}
+
+//How to define propTypes, defaultProps, contextTypes, etc...//
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = 
+  id: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+  text: PropTypes.string,
+};
+
+const defaultProps = {
+  text: 'Hello World',
+};
+
+class Link extends React.Component {
+  static methodsAreOk() {
+    return true;
+  }
+
+  render() {
+    return <a href={this.props.url} data-id={this.props.id}>{this.props.text}</a>;
+  }
+}
+
+Link.propTypes = propTypes;
+Link.defaultProps = defaultProps;
+
+export default Link;
