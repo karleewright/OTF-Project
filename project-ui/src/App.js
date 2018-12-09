@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from './Pgs/Home';
-import NavbarPage from './components/navbar';
+
+import HomeTemplate from '../src/Components/Home/HomeTemplate';
 
 import './App.css';
 
@@ -10,9 +10,8 @@ class App extends Component {
     return (
     <Router>
       <div className="App">
-       <Home/>
-       <Route exact path = '/' Component={Home}/>
-        
+       <HomeTemplate/>
+       <Route exact path = '/' Component={HomeTemplate}/>
       </div>
     </Router>
     );

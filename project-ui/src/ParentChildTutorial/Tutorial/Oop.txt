@@ -1,0 +1,22 @@
+ES6  
+
+var elements = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+varname.function(varname => varname.otherfunction)
+element.map(element => element.length) // [8,6,7,9]
+
+
+//OBJECT Creation
+Object literal = {}
+Constructor()
+Destructure()
+
+//PROTOTYPES
+Instansiate Object then Inheriet
+
+Object.prototype. _________

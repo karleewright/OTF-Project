@@ -13,12 +13,13 @@ class NavBar extends React.Component {
     return (
 
       <Navbar color="orange" dark expand="lg">
-          <NavbarBrand left >
-            <strong className="white-text"> Welcome Karlee! </strong>
-          </NavbarBrand>
+          <NavbarBrand left className="white-text"> Welcome Karlee! >
+           </NavbarBrand>
+          
           <NavbarToggler
             onClick={this.toggleCollapse}
           />
+          
           <Collapse
             id="navbarCollapse3"
             isOpen={this.state.isOpen}
@@ -29,7 +30,6 @@ class NavBar extends React.Component {
                     <strong className="white-text"> Actions </strong>
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem href="/">@kw   Login/Logout</DropdownItem>
                     <DropdownItem href="/viewstats">View Stats</DropdownItem>
                     <DropdownItem href="/addstats">Add a Stat</DropdownItem>
                     <DropdownItem href="/updatestat">Update a Stat</DropdownItem>
