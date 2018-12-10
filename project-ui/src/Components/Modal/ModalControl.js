@@ -32,11 +32,12 @@ class ModalControl extends React.Component {
       return(
 
        <div>
+         
         Inside Modal ModalControl: <br/>
         Add Stats JSX <br/>
         Delete Stats JSX <br/>
         Update Stats JSX <br/>
-
+       
        </div>
       
       )
@@ -45,7 +46,7 @@ class ModalControl extends React.Component {
 
 }
     
-export default ModalControl
+export default ModalControl;
 
 
 

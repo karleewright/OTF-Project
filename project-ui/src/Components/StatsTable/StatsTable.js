@@ -18,12 +18,11 @@ import 'react-table/react-table.css'
             
 */
 class StatsTable extends Component {
-    constructor() {
+    constructor( props ) {
         super();
         this.state = {
-            data:[],
-            accessor: {}
-        
+            data:[ ],
+            _id: "id"
           }
 
 
@@ -32,33 +31,41 @@ class StatsTable extends Component {
 
     }
     
-    
-    componentDidMount = async () => {
-        await fetch('http://localhost:4000/stats')
-      .then(function(response) {
-        return response.json();
+    componentDidMount(){
+      const url = "http://localhost:4000/stats";
+      fetch(url, {
+        method: "GET"
+      }).then(response => response.json()).then(data => {
+        // console.log("data",data)
+        this.setState({data: data})
       })
-      //In this.setState we are assigning stats to myJson data
-      .then((myJson) => {
-        this.setState({data : myJson});  
-        console.log('all stats' , this.state.data)
-      });
+
     }
     
+   
+    
+       
+    
+  
+    
     render() {
-      const { data } = this.state;
+     
+      
       return (
         <div>
           <ReactTable
-            data={data}
+            data={this.state.data}
+            _id= {this.state.data._id}
             columns={[
               {
                 Header: "Date",
                 columns: [
                   {
                     Header: "Date",
-                    id: "Date",
-                    accessor: d => d.lastName
+                    accessor: "Date",
+                    sortable: true,
+                    filterable: true
+                    
                   }
                 ]
               },
@@ -66,10 +73,17 @@ class StatsTable extends Component {
 
               {
                 Header: "Calories Burned",
+
                 columns: [
                   {
                     Header: "Calories Burned",
-                    accessor: "Burned"
+                    accessor: "Burned",
+                    sortable: true,
+                    filterable: true,
+                    width: 100,
+                    maxWidth: 100,
+                    minWidth: 100,
+
                   },
                 ]
               },
@@ -80,23 +94,33 @@ class StatsTable extends Component {
                 columns: [
                   {
                     Header: "Low",
-                    accessor: "Low"
+                    accessor: "Low",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "Med",
-                    accessor: "High"
+                    accessor: "Med",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "High",
-                    accessor: "High"
+                    accessor: "High",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "Critical",
-                    accessor: "Critical"
+                    accessor: "Critical",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "Extreme",
-                    accessor: "Extreme"
+                    accessor: "Extreme",
+                    sortable: false,
+                    filterable: false
                   },
                 ]
               },
@@ -106,25 +130,74 @@ class StatsTable extends Component {
                 columns: [
                   {
                     Header: "Average",
-                    accessor: "AvgHR"
+                    accessor: "AvgHR",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "Peak HeartRate",
-                    accessor: "PeakHR"
+                    accessor: "PeakHR",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "Avg. % Max HR",
-                    accessor: "AvgPercMaxHR"
+                    accessor: "AvgPercMaxHR",
+                    sortable: false,
+                    filterable: false
                   },
                   {
                     Header: "MaxHR",
-                    accessor: "MaxHR"
-                  },
+                    accessor: "MaxHR",
+                    sortable: false,
+                    filterable: false 
+                  }
+                  ]
+                },
+
+                { 
+                    Header: "Actions",
+                    columns: [
+                    {
+                      Header: "Add",
+                      sortable: false,
+                      fitlerable: false,
+                      width: 100,
+                      maxWidth: 100,
+                      minWidth: 100,
+                      Cell: props => {
+                        return(
+                          <button style= {{backgroundColor: "green"}} >Add </button>
+                        )
+                      }
+                    },
+                      {
+                        Header: "Edit",
+                        sortable: false,
+                        fitlerable: false,
+                        width: 100,
+                        maxWidth: 100,
+                        minWidth: 100,
+                        Cell: props => {
+                          return(
+                            <button style= {{backgroundColor: "blue"}} >Edit </button>
+                          )
+                        }
+                      },
+                      {
+                        Header: "Delete",
+                        sortable: false,
+                        fitlerable: false,
+                        width: 100,
+                        maxWidth: 100,
+                        minWidth: 100,
+                        Cell: props => {
+                          return(
+                            <button style= {{backgroundColor: "red"}} >Delete </button>
+                          )}
+                      } 
                 ]
-              },
-
-
-
+              }
             ]}
             defaultPageSize={10}
             className="-striped -highlight"

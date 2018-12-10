@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
 
 
 class NavBar extends React.Component {
@@ -13,7 +13,7 @@ class NavBar extends React.Component {
     return (
 
       <Navbar color="orange" dark expand="lg">
-          <NavbarBrand left className="white-text"> Welcome Karlee! >
+          <NavbarBrand left className="white-text"> Welcome Karlee!
            </NavbarBrand>
           
           <NavbarToggler
