@@ -13,29 +13,12 @@ class NavBar extends React.Component {
     return (
 
       <Navbar color="orange" dark expand="lg">
-          <NavbarBrand left className="white-text"> Welcome Karlee!
-           </NavbarBrand>
-          
-          <NavbarToggler
-            onClick={this.toggleCollapse}
-          />
-          
+      <NavbarBrand left className="white-text"> Welcome Karlee!</NavbarBrand>
+           
           <Collapse
             id="navbarCollapse3"
             isOpen={this.state.isOpen}
             navbar>
-        
-                <Dropdown>
-                  <DropdownToggle nav caret>
-                    <strong className="white-text"> Actions </strong>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem href="/viewstats">View Stats</DropdownItem>
-                    <DropdownItem href="/addstats">Add a Stat</DropdownItem>
-                    <DropdownItem href="/updatestat">Update a Stat</DropdownItem>
-                    <DropdownItem href="/deletestat">Delete a Stat</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
           </Collapse>
       </Navbar>
     );

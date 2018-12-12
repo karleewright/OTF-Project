@@ -1,12 +1,13 @@
 /* eslint-disable no-dupe-class-members */
 // https://medium.com/front-end-hacking/tested-react-lets-build-a-data-table-a76aa100d23f
 
-// import {API Object}
 
+import ModalPage from "../Modal/ModalPage";
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-
+// import AlertPage from "./AlertPage";
+import EditModalPage from "../Modal/EditModalPage";
 /* What data do you want to manipulate
             
             NOTE If your data has a field/key with a dot (.) you will need to supply a custom accessor.
@@ -37,37 +38,30 @@ class StatsTable extends Component {
       });
   }
 
-  deleteStat = async (event) => {
-    console.log(event.target.value);
-    
+  deleteStat = async event => {
+    // console.log(event.target.value);
     const url = "http://localhost:4000/stats/id/" + event.target.value;
     await fetch(url, {
-    method: "DELETE"
-    }).then(res => res.json())
+      method: "DELETE"
+    }).then(res => res.json());
   };
 
-
-
-  addStat = () => {
-    console.log("add Stat Clicked");
+  confirmDelete = () => {
+    alert("Are you sure you want to Delete?");
   };
-  
-  
+
   editStat = () => {
     console.log("edit Stat Clicked");
   };
-
-
 
   render() {
     console.log("logs", this.state.data);
 
     return (
-      <div>
+      <React.Fragment>
+        <ModalPage />
         <ReactTable
           data={this.state.data}
-    
-
           columns={[
             {
               Header: "Date",
@@ -167,41 +161,15 @@ class StatsTable extends Component {
               Header: "Actions",
               columns: [
                 {
-                  Header: "Add",
-                  sortable: false,
-                  fitlerable: false,
-                  width: 100,
-                  maxWidth: 100,
-                  minWidth: 100,
-                  Cell: props => {
-                    return (
-                      <button
-                        onClick={this.addStat}
-                        style={{ backgroundColor: "green" }}
-                        value={props.value}
-                      >
-                        Add
-                      </button>
-                    );
-                  }
-                },
-                {
                   Header: "Edit",
                   sortable: false,
                   fitlerable: false,
                   width: 100,
                   maxWidth: 100,
                   minWidth: 100,
+                  accessor: "_id",
                   Cell: props => {
-                    return (
-                      <button
-                        onClick={this.editStat}
-                        style={{ backgroundColor: "blue" }}
-                        value={props.value}
-                      >
-                        Edit{" "}
-                      </button>
-                    );
+                    return <EditModalPage rowId={props.value} />;
                   }
                 },
                 {
@@ -216,7 +184,6 @@ class StatsTable extends Component {
                     return (
                       <button
                         onClick={this.deleteStat}
-                        index={this.state.data._id}
                         style={{ backgroundColor: "red" }}
                         value={props.value}
                       >
@@ -232,7 +199,7 @@ class StatsTable extends Component {
           className="-striped -highlight"
         />
         <br />
-      </div>
+      </React.Fragment>
     );
   }
 }
