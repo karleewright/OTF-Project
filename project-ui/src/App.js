@@ -11,6 +11,8 @@ class App extends Component {
     <Router>
       <div className="App">
        <HomeTemplate/>
+       // Add the Create Route
+       // Add the Update Route
        <Route exact path = '/' Component={HomeTemplate}/>
       </div>
     </Router>
