@@ -19,7 +19,7 @@ class EditModalPage extends React.Component {
       modal14: false
     };
   }
-//(***Not Updated in Page)
+
   componentDidMount() {
     // console.log("data is logging", data);
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
@@ -31,9 +31,9 @@ class EditModalPage extends React.Component {
       });
   }
 
-
+//Not Updated in Page
   editStats = async event => {
-    console.log("PUUUUTTTT", this.state.statData);
+    console.log("PUTTWORKKINGGG?", this.state.statData);
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
     fetch(url, {
       method: "PUT",
@@ -118,7 +118,7 @@ class EditModalPage extends React.Component {
                       defaultValue={this.state.statData.Medium}
                       onChange={event =>
                         this.setState({
-                        statData: {...this.state.Data, Medium: event.target.value}})
+                        statData: {...this.state.statData, Medium: event.target.value}})
                       }
                       name="medium"/>
                     <br />
@@ -145,7 +145,7 @@ class EditModalPage extends React.Component {
                       defaultValue={this.state.statData.Critical}
                       onChange={event =>
                         this.setState({
-                          Data: {...this.state.Data, Critical: event.target.value}})
+                          statData: {...this.state.statData, Critical: event.target.value}})
                       }
                       name="critical"/>
                     <br />
@@ -158,7 +158,7 @@ class EditModalPage extends React.Component {
                       defaultValue={this.state.statData.Extreme}
                       onChange={event =>
                         this.setState({
-                          Data: {...this.state.statData, Extreme: event.target.value}})
+                          statData: {...this.state.statData, Extreme: event.target.value}})
                       }
                       name="extreme"/>
                     <br />
@@ -171,7 +171,7 @@ class EditModalPage extends React.Component {
                       defaultValue={this.state.statData.AvgHR}
                       onChange={event =>
                         this.setState({
-                        Data:{...this.state.statData, AvgHR: event.target.value}
+                        statData:{...this.state.statData, AvgHR: event.target.value}
                         })}
                       name="AvgHR"/>
                     <br />
@@ -210,7 +210,7 @@ class EditModalPage extends React.Component {
                       defaultValue={this.state.statData.MaxHR}
                       onChange={event =>
                         this.setState({
-                          Data: {...this.state.Data, MaxHR: event.target.value}})}
+                          statData: {...this.state.statData, MaxHR: event.target.value}})}
                       name="MaxHR"/>
                     <br />
 
@@ -222,7 +222,7 @@ class EditModalPage extends React.Component {
               <Button color="grey" onClick={() => this.toggle(14)}>
                 Close
               </Button>
-              <Button color="blue" onClick={this.editStats}>
+              <Button color="blue" onClick={() => this.editStats()}>
                 Edit Stat
               </Button>
             </ModalFooter>
