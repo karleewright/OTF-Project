@@ -5,17 +5,6 @@ const db = require('./dbconfig');
 
 const stats = db.get("Stats")
 
-/* { Date: ",
-    Burned: ",
-    Low: ",
-    Med: ",
-    High: ",
-    Critical: ",
-    Extreme : ",
-    AvgHR: “,
-    PeakHR : ",  
-    AvgPercMaxHR : ",
-    MaxHR :  “} */
 
 
 // [GET] /stats	200 []	Get all the stats
@@ -32,40 +21,15 @@ const getStatsByID = async (req, res) => {
     send(res, 200, result)
 }
 
-/*[POST]	  /stats	200 {}	Create a Daily Stat Record
-{ Date: ",
-    Burned: ",
-    Low: ",
-    Med: ",
-    High: ",
-    Critical: ",
-    Extreme : ",
-    AvgHR: “,
-    PeakHR : ",  
-    AvgPercMaxHR : ",
-    MaxHR :  “} */
+
 
 const postStats = async (req,res) => {
     const body = await json (req)
-    // const result = await stats.body({"_id" : req.params.id}).then(results => (results))
     const result = await stats.insert( body ).then(results => (results))
     send(res, 200, result)
 }
 
 
-// [PUT] /stats/id/:id	200 {} 	Update a Daily Stat Record
-
-/*{ Date: ",
-    Burned: ",
-    Low: ",
-    Med: ",
-    High: ",
-    Critical: ",
-    Extreme : ",
-    AvgHR: “,
-    PeakHR : ",  
-    AvgPercMaxHR : ",
-    MaxHR :  “} */	
 
 const updateStats = async (req, res) => {
     const body = await json(req)
