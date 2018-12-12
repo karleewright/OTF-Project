@@ -10,7 +10,7 @@ const stats = db.get("Stats")
 // [GET] /stats	200 []	Get all the stats
 const getStats = async (req, res) => {
     const result = await stats.find().then(results => (results))
-    send(res, 200, result)
+    return send(res, 200, result)
 
 }
 
@@ -18,7 +18,7 @@ const getStats = async (req, res) => {
 //[GET]	 /stats/id/:id	200 {} 	Get a single stat set by ID
 const getStatsByID = async (req, res) => {
     const result = await stats.find({"_id" : req.params.id }).then(results => (results))
-    send(res, 200, result)
+    return send(res, 200, result)
 }
 
 
@@ -26,7 +26,7 @@ const getStatsByID = async (req, res) => {
 const postStats = async (req,res) => {
     const body = await json (req)
     const result = await stats.insert( body ).then(results => (results))
-    send(res, 200, result)
+    return send(res, 200, result)
 }
 
 
@@ -34,7 +34,7 @@ const postStats = async (req,res) => {
 const updateStats = async (req, res) => {
     const body = await json(req)
     const result= await stats.update({"_id": req.params.id }, body).then(results =>(results))
-    send(res, 200, result)
+    return send(res, 200, result)
 }
 
 
@@ -42,7 +42,7 @@ const updateStats = async (req, res) => {
 //users.findOneAndDelete({name: 'foo'}).then((doc) => {})
 const deleteStats = async (req, res) => {
     const result = await stats.remove({"_id":req.params.id}).then(results => (results))
-    send(res, 200, result)
+    return send(res, 200, result)
 }
 
 const notfound = (req, res) => send(res, 404, 'NOT WORKING!!!!')
