@@ -1,25 +1,15 @@
 import React from "react";
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
+import { Navbar, NavbarBrand} from "mdbreact";
 
 
 class NavBar extends React.Component {
-  state = {
-    isOpen: false
-  };
-
-  toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
-
+ 
   render() {
     return (
 
       <Navbar color="orange" dark expand="lg">
-      <NavbarBrand left className="white-text"> Welcome Karlee!</NavbarBrand>
+      <NavbarBrand left="true" className="white-text"> Welcome Karlee!</NavbarBrand>
            
-          <Collapse
-            id="navbarCollapse3"
-            isOpen={this.state.isOpen}
-            navbar>
-          </Collapse>
       </Navbar>
     );
   }

@@ -1,4 +1,4 @@
-//Modals Control FLOW  pops up as 
+//Modals Control FLOW Add Stats Modal
 
 import React from "react";
 import {
@@ -19,7 +19,7 @@ class ModalPage extends React.Component {
   constructor(props) {
     super(props);
     
-    
+    //allows for change in state to each of the fields on my modal page
     this.state = {
     Data : {
         Date : "",
@@ -42,9 +42,9 @@ class ModalPage extends React.Component {
    
   }
   
-  
+  //posts data when addStat function is called. sets the datat to (this.state.Data)
   addStat = async (event) => {
-    console.log("POOOSTING", this.state.Data);
+    console.log("Adding to MEDFIELD", this.state.Data);
  
    const url= "http://localhost:4000/stats"
    await fetch (url, {
@@ -52,7 +52,8 @@ class ModalPage extends React.Component {
      body: JSON.stringify(this.state.Data)
    }).then(res => res.json())
    .then(res => console.log('success: ', JSON.stringify(res)))
-   .catch(error => console.log('Error:', error))
+   .catch(error => console.log('Error:', error)) 
+   
  }
 
 
@@ -66,12 +67,6 @@ class ModalPage extends React.Component {
     console.log("modal delete button works")
   }
 
-  //WHY DO I HAVE A MODAL # HERE?
-//Objective: 
- //I want my model to set state on {object} with toggle. 
- //I need a function to setState() to EACH modalNumber #?
- //I need my
-  //interaction point to also be a function .
 
   toggle(nr) { 
     let modalNumber = "modal" + nr;  
@@ -207,163 +202,8 @@ class ModalPage extends React.Component {
         </Modal>
       </Container>
       </div>
-    )
-
-
-  }
+    )}
 
 }
 
 export default ModalPage;
-
-
-  //     <Container>
-       
-  //       <Button color="primary" 
-  //               onClick={() => this.toggle(14)}>
-  //               Update Stats Here
-  //       </Button>
-        
-  //       <Modal isOpen={this.state.modal14}
-  //               toggle={() => this.toggle(14)}>
-        
-  //       <ModalHeader  
-  //               toggle={() => this.toggle(14)}> 
-  //               Add Your Stats Here 
-  //       </ModalHeader>
-        
-  //             <ModalBody>   
-        
-  //             <Container  
-  //             className="text-white">
-  //             <form className= "statsform" 
-  //             onSubmit={this.handleSubmit}/>
-            
-  //             <Row>
-  //             <Col>
-  //                 Date:
-  //                 <div style = {{textAlign:"left", padding: "5px 5px"}}>
-  //                 <input type="text" 
-  //                 value= {this.state.Date} 
-  //                 onChange= {event=> this.setState ({Date:event.target.value})}
-  //                 name= "date"  
-  //                 placeholder="YYYY.MM.DD" /> 
-  //                 <br />
-  //                 </div>
-
-  //                 Burned:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}>
-  //                 <input type="text" 
-  //                 value= {this.state.Burned}
-  //                 onChange= {event=>this.setState ({Burned:event.target.value})}
-  //                 name="burned" 
-  //                 placeholder="Calories Burned?" />
-  //                 <br />
-  //                 </div>
-
-  //                 Low:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value= {this.state.Low}
-  //                 onChange= {event=>this.setState ({Low:event.target.value})}
-  //                 name="low"  
-  //                 placeholder="Grey HR Zone" />
-  //                 <br />
-                 
-              
-  //                 Medium:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value={this.state.Medium}
-  //                 onChange= {event=>this.setState ({Medium:event.target.value})}
-  //                 name="medium" 
-  //                 placeholder="Blue HR Zone" />
-  //                 <br />
-             
-  //                 High:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value={this.state.High}
-  //                 onChange={event=>this.setState ({High:event.target.value})}
-  //                 name="high" 
-  //                 placeholder="Green HR Zone" />
-  //                 <br />
-              
-  //                 Critical:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value= {this.state.Critical}
-  //                 onChange= {event=>this.setState ({Critical:event.target.value})}
-  //                 name="critical" 
-  //                 placeholder="Orange HR Zone" />
-  //                 <br />
-             
-  //                 Extreme:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value= {this.state.Extreme}
-  //                 onChange={event=>this.setState ({Extreme:event.target.value})}
-  //                 name="extreme" 
-  //                 placeholder="Red HR Zone" />
-  //                 <br />
-              
-  //                 AvgHR:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value={this.state.AvgHR}
-  //                 onChange={event=>this.setState ({AvgHR:event.target.value})}
-  //                 name="AvgHR" 
-  //                 placeholder="Average Heart Rate #" />
-  //                 <br />
-              
-  //                 PeakHR:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value={this.state.PeakHR}
-  //                 onChange={event=>this.setState ({PeakHR:event.target.value})}
-  //                 name="PeakHR" 
-  //                 placeholder="Peak Heart Rate #" />
-  //                 <br />
-              
-  //                 AvgPercMaxHR:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value={this.state.AvgPercMaxHR}
-  //                 onChange={event=>this.setState ({AvgPercMaxHR:event.target.value})}
-  //                 name="AvgPercMaxHR" 
-  //                 placeholder="Average % Max HR" />
-  //                 <br />
-              
-  //                 MaxHR:
-  //                 <div style = {{textAlign:"left", padding: "10px 10px"}}></div>
-  //                 <input type="text" 
-  //                 value={this.state.MaxHR}
-  //                 onChange={event=>this.setState ({MaxHR:event.target.value})}
-  //                 name="MaxHR" 
-  //                 placeholder="Max HR #" />
-  //                 <br />
-              
-              
-  //             </Col>
-  //             </Row>
-     
-          
-  //             <ModalFooter>
-  //          <Button  
-  //          color="primary" 
-  //          onClick ={ () => this.handleSubmit}>
-  //          Save changes</Button>
-  //          <Button 
-  //          color="secondary" 
-  //          onClick={() => this.toggle(14)}>
-  //          Close</Button>
-  //          </ModalFooter>
-  //         </Modal>
-  //       </Container>
-    
-  //   );
-  // }
-
-  //DO I NEED THIS??
-  // componentDidMount() to grab external data on the GET call 
-  //componentWillUpdate() to update data on PUT/POST/DEL call?

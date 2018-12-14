@@ -14,14 +14,13 @@ class Home extends Component {
   };
 
 
-
+//add Routing Paths Here
   render() {
     return (
       <div>
        This is Home 
-
-        <NavBar />
-        <StatsTable/>
+          <NavBar />
+        <StatsTable />
       
       </div>
     );

@@ -9,6 +9,7 @@ import {
   Row,
   Col
 } from "mdbreact";
+import './ModalCSS.css';
 
 class EditModalPage extends React.Component {
   constructor(props) {
@@ -20,8 +21,9 @@ class EditModalPage extends React.Component {
     };
   }
 
+  
   componentDidMount() {
-    // console.log("data is logging", data);
+  console.log("EditModilGETLogs");
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
     fetch(url, 
       {method: "GET"})
@@ -31,9 +33,13 @@ class EditModalPage extends React.Component {
       });
   }
 
-//Not Updated in Page
+  
+  onClick(event) {
+  return this.state.statData
+  }
+
   editStats = async event => {
-    console.log("PUTTWORKKINGGG?", this.state.statData);
+    // console.log("EDITPOST WORKING?", this.state.statData);
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
     fetch(url, {
       method: "PUT",
@@ -41,7 +47,9 @@ class EditModalPage extends React.Component {
     })
       .then(res => res.json())
       .then(response => console.log("Success:", JSON.stringify(response)))
-      .catch(error => console.error("Error:", error));
+      .catch(error => console.error("Error:", error))
+      .then (()=>this.toggle(14)) 
+      //toggle close this.then.datagrabber
   };
 
   
@@ -57,7 +65,7 @@ class EditModalPage extends React.Component {
     return (
       <div>
         <Container>
-          <Button color="blue" onClick={() => this.toggle(14)}>
+          <Button className= "editbtn" color="blue" onClick={() => this.toggle(14)}>
             Edit
           </Button>
           <Modal
