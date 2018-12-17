@@ -9,16 +9,6 @@ import "react-table/react-table.css";
 import EditModalPage from "../Modal/EditModalPage";
 
 
-/*
-            
-            NOTE If your data has a field/key with a dot (.) you will need to supply a custom accessor.
-
-            accessor: 'propertyName', // or Accessor eg. (row) => row.propertyName (see "Accessors" section for more details)
-
-            id: 'myProperty', // Conditional - A unique ID is required if the accessor is not a string or if you would like to override the column name used in server-side calls
-            
-*/
-
 class StatsTable extends Component {
   constructor(props) {
     super();

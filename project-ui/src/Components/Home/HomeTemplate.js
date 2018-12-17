@@ -3,8 +3,6 @@
 
 
 import React, { Component } from "react";
-
-import NavBar from "../Home/NavBar";
 import StatsTable from "../StatsTable/StatsTable";
 
 
@@ -14,14 +12,10 @@ class Home extends Component {
   };
 
 
-//add Routing Paths Here
   render() {
     return (
       <div>
-       This is Home 
-          <NavBar />
-        <StatsTable />
-      
+        <StatsTable/>
       </div>
     );
   }
