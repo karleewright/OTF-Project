@@ -1,7 +1,4 @@
 
-// https://medium.com/front-end-hacking/tested-react-lets-build-a-data-table-a76aa100d23f
-
-
 import ModalPage from "../Modal/ModalPage";
 import React, { Component } from "react";
 import ReactTable from "react-table";
@@ -20,8 +17,10 @@ class StatsTable extends Component {
 
   componentDidMount() {
     this.dataGrabber()
-  }
+    }
 
+  
+  //GET API Call on Component Mounting
   dataGrabber =( )=> {
     const url = "http://localhost:4000/stats";
     fetch(url, {
@@ -33,36 +32,19 @@ class StatsTable extends Component {
       });
   }
 
+
+  //Delete API Call 
   deleteStat = async event => {
-    // console.log(event.target.value);
     const url = "http://localhost:4000/stats/id/" + event.target.value;
     await fetch(url, {
       method: "DELETE"
     }).then(res => res.json());
   };
 
-  
-//allows for the put of new data 
 
-  // editStats = async event => {
-  //   console.log("edit Statsssss Clicked");
-  //   const url = "http://localhost:4000/stats/id/" + event.target.value;
-  //   fetch(url, {
-  //     method: "PUT",
-  //     body: JSON.stringify(this.state.data)
-  //   })
-  //     .then(res => res.json())
-  //     .then(response => console.log("Success:", JSON.stringify(response)))
-  //     .catch(error => console.error("Error:", error));
-  //     this.dataGrabber()
-  // };
-
-  
-
-
+  //JSX Rendering of Columns && Rows, Edit Modal Button to Page, Delete Button for target value
   render() {
-    
-
+  
     return (
       <React.Fragment>
         <ModalPage />

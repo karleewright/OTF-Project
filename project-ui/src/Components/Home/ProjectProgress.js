@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 // import { makeData, Logo, Tips } from "./Utils";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
@@ -8,17 +8,21 @@ class ProjectProgress extends React.Component {
   constructor() {
     super();
     this.state = {
+      data: [],
+      isloaded: true
     };
     this.renderEditable = this.renderEditable.bind(this);
   }
+
+ 
 
 
   renderEditable(cellInfo) {
     return (
       <div
         style={{ backgroundColor: "#fafafa" }}
-        contentEditable
-        suppressContentEditableWarning
+        contentEditable="true"
+        suppressContentEditableWarning="false"
         onBlur={e => {
           const data = [...this.state.data];
           data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
@@ -33,17 +37,16 @@ class ProjectProgress extends React.Component {
 
 
   render() {
-    const { data } = this.state;
+    const { data } = this.state.data;
     return (
       <div>
         <ReactTable
           data={data}
-          className= "projectprogress"
           columns={[
             {
               Header: "Feature to Add",
               accessor: "feature",
-              Cell: this.renderEditable
+              Cell: this.state.makeData
             },
             {
               Header: "Due Date",

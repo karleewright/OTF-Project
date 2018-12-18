@@ -42,9 +42,9 @@ class ModalPage extends React.Component {
    
   }
   
-  //posts data when addStat function is called. sets the datat to (this.state.Data)
+  //POST  API call  when addStat() sets the data to (this.state.Data)
   addStat = async (event) => {
-    console.log("Adding to MEDFIELD", this.state.Data);
+    // console.log("Adding to MEDFIELD", this.state.Data);
  
    const url= "http://localhost:4000/stats"
    await fetch (url, {
@@ -91,7 +91,7 @@ class ModalPage extends React.Component {
                <Col>
                   Date:
                   <div style = {{textAlign:"left", padding: "0px 10px"}}></div>
-                  <input type="text" 
+                  <input type="date" 
                   defaultValue= {this.state.Data.Date} 
                   onChange= {event=> this.setState ({Data: {...this.state.Data, Date:event.target.value}})}
                   name= "date"  
@@ -101,7 +101,7 @@ class ModalPage extends React.Component {
 
                   Burned:
                   <div style = {{textAlign:"left", padding: "0px 10px"}}></div>
-                  <input type="text" 
+                  <input type="number" 
                   defaultValue= {this.state.Data.Burned}
                   onChange= {event=>this.setState ({Data: {...this.state.Data, Burned:event.target.value}})}
                   name="burned" 
@@ -196,7 +196,7 @@ class ModalPage extends React.Component {
             </form> 
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={() => this.toggle(14)}>Close</Button>
+            <Button color="grey" onClick={() => this.toggle(14)}>Close</Button>
             <Button color="green" onClick= {this.addStat}>Add Stat</Button>
           </ModalFooter>
         </Modal>

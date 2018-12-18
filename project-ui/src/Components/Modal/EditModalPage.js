@@ -22,8 +22,8 @@ class EditModalPage extends React.Component {
   }
 
   
+  //getting data for a PUT API Call
   componentDidMount() {
-  console.log("EditModilGETLogs");
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
     fetch(url, 
       {method: "GET"})
@@ -38,8 +38,8 @@ class EditModalPage extends React.Component {
   return this.state.statData
   }
 
+  //PUT API Call
   editStats = async event => {
-    // console.log("EDITPOST WORKING?", this.state.statData);
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
     fetch(url, {
       method: "PUT",
@@ -49,10 +49,13 @@ class EditModalPage extends React.Component {
       .then(response => console.log("Success:", JSON.stringify(response)))
       .catch(error => console.error("Error:", error))
       .then (()=>this.toggle(14)) 
-      //toggle close this.then.datagrabber
+
+      //toggle on close this.then.datagrabber????
   };
 
-  
+
+
+  //State Change For Modal
   toggle(nr) {
     let modalNumber = "modal" + nr;
     this.setState({
@@ -60,30 +63,35 @@ class EditModalPage extends React.Component {
     });
   }
 
+
+
+
+  //JSX React Render
   render() {
     console.log(this.state.statData);
     return (
       <div>
         <Container>
-          <Button className= "editbtn" color="blue" onClick={() => this.toggle(14)}>
-            Edit
+          <Button className= "editbtn" color="blue" 
+          onClick={() => this.toggle(14)}>
+          Edit
           </Button>
           <Modal
             isOpen={this.state.modal14}
             toggle={() => this.toggle(14)}
-            centered
-          >
-            <ModalHeader toggle={() => this.toggle(14)}>
-              Edit Stats in Database
-            </ModalHeader>
-            <ModalBody>
+            centered>
+          <ModalHeader toggle={() => this.toggle(14)}>
+          Edit Stats in Database
+          </ModalHeader>
+          
+          <ModalBody>
               <form>
                 <Row>
                   <Col>
                     Date:
                     <div style={{ textAlign: "left", padding: "0px 10px" }} />
                     <input
-                      type="text"
+                      type="date"
                       defaultValue={this.state.statData.Date}
                       onChange=
                       {event => this.setState({
@@ -96,7 +104,7 @@ class EditModalPage extends React.Component {
                     Burned:
                     <div style={{ textAlign: "left", padding: "0px 10px" }} />
                     <input
-                      type="text"
+                      type="number"
                       defaultValue={this.state.statData.Burned}
                       onChange=
                       {event => this.setState({
@@ -226,14 +234,17 @@ class EditModalPage extends React.Component {
                 </Row>
               </form>
             </ModalBody>
+
             <ModalFooter>
               <Button color="grey" onClick={() => this.toggle(14)}>
                 Close
               </Button>
+
               <Button color="blue" onClick={() => this.editStats()}>
                 Edit Stat
               </Button>
             </ModalFooter>
+
           </Modal>
         </Container>
       </div>

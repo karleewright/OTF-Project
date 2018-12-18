@@ -5,11 +5,11 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+  NavItem,} from "reactstrap";
+import {  Link } from "react-router-dom";
+import './NavBarCSS.css';
 
-export default class Navbarmenu extends React.Component {
+export default class NavbarMenu extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,6 +23,9 @@ export default class Navbarmenu extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  
+
   render() {
     return (
       <div>
@@ -32,13 +35,15 @@ export default class Navbarmenu extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
+               <Link to="/" className="home">Home</Link> 
               </NavItem>
-              <NavItem>
-                <NavLink href="/about">About</NavLink>
+
+              <NavItem >
+                <Link to="/about" className="about">About</Link>
               </NavItem>
-              <NavItem>
-                <NavLink href="/projectprogress">Project Progress</NavLink>
+
+              <NavItem >
+                <Link to="/projectprogress" className="projectprogress">Project Progress</Link>
               </NavItem>
               </Nav>
           </Collapse>
@@ -48,4 +53,5 @@ export default class Navbarmenu extends React.Component {
     
     );
   }
+
 }
