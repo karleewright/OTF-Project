@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import HomeTemplate from '../src/Components/Home/HomeTemplate';
-import ProjectProgress from '../src/Components/Home/ProjectProgress';
 import NavBarMenu from './Components/Home/NavBarMenu';
 import About from './Components/Home/About';
 import './App.css';
@@ -15,7 +14,7 @@ class App extends Component {
         <NavBarMenu />
         <Route exact path="/" component={HomeTemplate}/>
         <Route path="/about" component={About}/>
-        <Route path="/projectprogress" component={ProjectProgress}/>
+       
       </div>
     </Router>
       

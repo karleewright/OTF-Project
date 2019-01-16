@@ -42,30 +42,29 @@ class ModalPage extends React.Component {
    
   }
   
-  //POST  API call  when addStat() sets the data to (this.state.Data)
+  
+
+  onClick(event) {
+    return this.state.statData
+    }
+  
   addStat = async (event) => {
-    // console.log("Adding to MEDFIELD", this.state.Data);
- 
+  
    const url= "http://localhost:4000/stats"
    await fetch (url, {
      method: "POST",
      body: JSON.stringify(this.state.Data)
    }).then(res => res.json())
    .then(res => console.log('success: ', JSON.stringify(res)))
-   .catch(error => console.log('Error:', error)) 
-   
+   .catch(error => console.log('Error:', error))
+  .then(()=>this.props.dataGrabber())
+  .then(() => this.toggle(14))
  }
 
 
 
 
-  editStats(){
-    console.log("modal edit button works")
-  }
-
-  deleteStats(){
-    console.log("modal delete button works")
-  }
+  
 
 
   toggle(nr) { 
@@ -82,10 +81,15 @@ class ModalPage extends React.Component {
     return (
       <div>
       <Container>
-        <Button color="green" onClick={() => this.toggle(14)} >Add Stats</Button>
-        <Modal isOpen={this.state.modal14} toggle={() => this.toggle(14)} centered>
+        <Button color="green" 
+        onClick={() => this.toggle(14)}
+         >Add Stats</Button>
+        <Modal 
+        isOpen={this.state.modal14} 
+        toggle={() => this.toggle(14)} centered>
           <ModalHeader toggle={() => this.toggle(14)}>Add Stats To Database</ModalHeader>
           <ModalBody>
+
             <form>
             <Row>
                <Col>
@@ -196,8 +200,11 @@ class ModalPage extends React.Component {
             </form> 
           </ModalBody>
           <ModalFooter>
-            <Button color="grey" onClick={() => this.toggle(14)}>Close</Button>
-            <Button color="green" onClick= {this.addStat}>Add Stat</Button>
+            <Button color="grey" onClick={() => this.toggle(14)} >Close</Button>
+            <Button color="green" 
+            onClick= {this.addStat}
+            >Add Stat
+            </Button>
           </ModalFooter>
         </Modal>
       </Container>

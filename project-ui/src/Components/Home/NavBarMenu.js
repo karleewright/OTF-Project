@@ -42,9 +42,7 @@ export default class NavbarMenu extends React.Component {
                 <Link to="/about" className="about">About</Link>
               </NavItem>
 
-              <NavItem >
-                <Link to="/projectprogress" className="projectprogress">Project Progress</Link>
-              </NavItem>
+  
               </Nav>
           </Collapse>
         </Navbar>

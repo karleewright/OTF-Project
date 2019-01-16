@@ -19,11 +19,12 @@ class StatsTable extends Component {
     this.dataGrabber()
     }
 
+
+
   
-  //GET API Call on Component Mounting
-  dataGrabber =( )=> {
+  dataGrabber  = async ( )=> {
     const url = "http://localhost:4000/stats";
-    fetch(url, {
+    await fetch(url, {
       method: "GET"
     })
       .then(res => res.json())
@@ -38,16 +39,18 @@ class StatsTable extends Component {
     const url = "http://localhost:4000/stats/id/" + event.target.value;
     await fetch(url, {
       method: "DELETE"
-    }).then(res => res.json());
+    }).then(res => res.json()).then(()=>this.dataGrabber());
   };
 
 
-  //JSX Rendering of Columns && Rows, Edit Modal Button to Page, Delete Button for target value
+
+
+  //JSX Rendering of Columns && Rows, Edit Modal Button on RowID, Delete Button for target value
   render() {
   
     return (
       <React.Fragment>
-        <ModalPage />
+        <ModalPage dataGrabber={this.dataGrabber}/>
         <ReactTable
           data={this.state.data}
           columns={[
@@ -147,6 +150,7 @@ class StatsTable extends Component {
                   Cell: props => {
                     return <EditModalPage
                     rowId= {props.value} 
+                    dataGrabber={this.dataGrabber}
                    />
                   }},
 
@@ -165,7 +169,7 @@ class StatsTable extends Component {
                     <button type="button" 
                       onClick={this.deleteStat}
                       value={props.value}
-                      className="btn btn-danger">Delete</button>)}
+                    className="btn btn-danger">Delete</button>)}
                   }]}
                     ]}
                   defaultPageSize={10}

@@ -22,7 +22,7 @@ class EditModalPage extends React.Component {
   }
 
   
-  //getting data for a PUT API Call
+  //getting data and assigning it to the rowID where we only need first index item pulled of that data
   componentDidMount() {
     const url = "http://localhost:4000/stats/id/" + this.props.rowId;
     fetch(url, 
@@ -33,7 +33,7 @@ class EditModalPage extends React.Component {
       });
   }
 
-  
+  //onClick takes an event and will give us back this statData that is set above
   onClick(event) {
   return this.state.statData
   }
@@ -48,9 +48,7 @@ class EditModalPage extends React.Component {
       .then(res => res.json())
       .then(response => console.log("Success:", JSON.stringify(response)))
       .catch(error => console.error("Error:", error))
-      .then (()=>this.toggle(14)) 
-
-      //toggle on close this.then.datagrabber????
+      .then (()=>this.toggle(14)).then(()=>this.props.dataGrabber()); //add stat this.toggle
   };
 
 
@@ -68,7 +66,7 @@ class EditModalPage extends React.Component {
 
   //JSX React Render
   render() {
-    console.log(this.state.statData);
+    // console.log(this.state.statData);
     return (
       <div>
         <Container>
@@ -84,6 +82,7 @@ class EditModalPage extends React.Component {
           Edit Stats in Database
           </ModalHeader>
           
+          {/*inline CSS Below */}
           <ModalBody>
               <form>
                 <Row>
